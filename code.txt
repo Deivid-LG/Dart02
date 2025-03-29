@@ -1,1 +1,34 @@
-Test
+class Profesor {
+  int? dni;
+  String? nombre;
+  double? sueldoBruto;
+
+  Profesor( this.dni,  this.nombre);
+
+  Profesor.conSueldo(this.sueldoBruto);
+
+  @override
+  String toString() {
+    return 'Profesordni: $dni, nombre: $nombre, sueldoBruto: $sueldoBruto';
+  }
+  
+  double sueldoNeto(){
+    double sueldoneto = 0;
+    sueldoneto = (this.sueldoBruto ?? 0) * 0.08;
+    
+    return sueldoneto;
+  }
+}
+
+ void main() {
+    Profesor profesor1 = Profesor(12345678,'Juan');
+   profesor1.sueldoBruto = 60000.0;
+    print(profesor1);
+    print(profesor1.sueldoNeto());
+    Profesor profesor2 = Profesor.conSueldo(50000.0);
+   profesor2.dni=12413322;
+   profesor2.nombre= 'Pedro';
+    print(profesor2);
+   print(profesor2.sueldoNeto());
+
+}
